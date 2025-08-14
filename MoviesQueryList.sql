@@ -1,10 +1,16 @@
 create table movielists(movie_name varchar(20),movie_release_date date,movie_cast varchar(250));
 create table direction(movie_name varchar(20),movie_director_name varchar(20),director_age numeric,director_hometown varchar(20));
 create table review(movie_name varchar(20),imbd decimal(2,2),review_comments varchar(250));
-select * from movielists;
+select * from movielists order by movie_release_date;
 select * from direction;
 select * from review;
 alter table review alter COLUMN imbd type decimal(4,2);
+
+alter table movielists add column movie_img bytea;
+update movielists set movie_img= 'https://1drv.ms/i/c/156c1054e61062de/EaCd6RtwO8ZOmJqegP8lYf4BjO6MhPL0gVfcaviBDkmB9A?e=SYUtDO' 
+where movielists.movie_release_date='2001-05-23';
+
+select movie_img from movielists where movie_img is not null;
 
 insert into movielists (movie_name,movie_release_date,movie_cast,movie_result) 
 values
