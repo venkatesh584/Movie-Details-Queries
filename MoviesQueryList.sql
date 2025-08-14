@@ -89,6 +89,10 @@ select imbd from director_details order by imbd desc;
 select imbd from movie_details
 except
 select imbd from director_details order by imbd desc;
+--concat--
+select DISTINCT m.movie_director_name ||' , '|| d.director_age as director
+from movie_details m join director_details d on m.movie_director_name=d.movie_director_name
+where d.director_age is not null;
 
 
 
